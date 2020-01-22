@@ -33,4 +33,10 @@ steps:
     dbt compile
     dbt test
     dbt run
-  displayName: 'Compile, Test, and Run'
+  displayName: 'Compile, Test'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'publish DBT artifact'
+    publishLocation: 'Container'
